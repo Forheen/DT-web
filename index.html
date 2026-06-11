@@ -3,323 +3,1230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Achintya — How should AI remember the world?</title>
+<title>MIAF & DT — Business Proposal to Drishtee Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#06080D;--bg-2:#0A0D14;--white:#F2F6FC;--muted:#8A96AC;--muted-dim:#5A6477;
-    --blue:#3B82F6;--blue-bright:#6BA6FF;--blue-deep:#1E3A8A;
-    --border:rgba(255,255,255,0.08);--border-blue:rgba(91,150,255,0.28);--glass:rgba(255,255,255,0.022);
-    --serif:'Instrument Serif',Georgia,serif;--sans:'Hanken Grotesk',sans-serif;--mono:'Space Mono',monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--white);font-family:var(--sans);font-weight:300;
-    line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  ::selection{background:rgba(91,150,255,0.3);color:#fff}
+:root{
+  --ink:#0D1117;--ink2:#1A2235;--muted:#5C6880;--mutedlt:#8A95A8;
+  --blue:#2563EB;--bluelt:#3B82F6;--bluepale:#EFF6FF;--bluebd:#BFDBFE;
+  --teal:#0D9488;--tealpale:#F0FDFA;--tealbd:#99F6E4;
+  --amber:#B45309;--amberpale:#FFFBEB;--amberbd:#FDE68A;
+  --green:#16A34A;--greenpale:#F0FDF4;--greenbd:#BBF7D0;
+  --rose:#BE185D;--rosepale:#FFF1F2;--rosebd:#FECDD3;
+  --page:#F8FAFC;--white:#FFFFFF;--bd:#E2E8F0;--bddk:#CBD5E1;
+  --brand:#06080D;--brandblue:#6BA6FF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Hanken Grotesk',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);
+  font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
 
-  .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:linear-gradient(rgba(91,150,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(91,150,255,0.05) 1px,transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 75%)}
-  .orb{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:0.55}
-  .orb-1{width:620px;height:620px;top:-260px;left:50%;transform:translateX(-50%);
-    background:radial-gradient(circle,rgba(59,130,246,0.55),transparent 65%);animation:drift 16s ease-in-out infinite}
-  .orb-2{width:480px;height:480px;bottom:-180px;left:-120px;
-    background:radial-gradient(circle,rgba(30,58,138,0.5),transparent 65%);animation:drift2 20s ease-in-out infinite}
-  .orb-3{width:420px;height:420px;top:55%;right:-160px;
-    background:radial-gradient(circle,rgba(107,166,255,0.28),transparent 65%);animation:drift3 24s ease-in-out infinite}
-  @keyframes drift{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-48%,40px)}}
-  @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-30px)}}
-  @keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+/* ── COVER ── */
+.cover{background:var(--brand);color:#fff;padding:60px 64px 56px;
+  position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 0% 0%,rgba(59,130,246,0.22),transparent 55%)}
+.cover::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 100% 100%,rgba(190,24,93,0.12),transparent 60%)}
+.covtop{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+.covlogos{display:flex;align-items:center;gap:16px}
+.covbrand{font-family:var(--serif);font-size:15px;letter-spacing:4px;color:var(--brandblue);
+  display:flex;align-items:center;gap:8px}
+.covbrand .dot{width:7px;height:7px;border-radius:50%;background:var(--brandblue);
+  box-shadow:0 0 10px var(--brandblue)}
+.covsep{color:rgba(255,255,255,0.2);font-size:18px}
+.covdt{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:rgba(255,255,255,0.45)}
+.covmeta{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.35);
+  letter-spacing:1px;text-align:right;line-height:2.2}
+.covbody{margin-top:68px;position:relative;z-index:1}
+.covlabel{font-family:var(--mono);font-size:11.5px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--brandblue);margin-bottom:20px}
+.covbody h1{font-family:var(--serif);font-weight:400;
+  font-size:clamp(32px,5.5vw,58px);line-height:1.06;letter-spacing:-1px;
+  margin-bottom:26px;max-width:22ch}
+.covbody h1 em{font-style:italic;color:var(--brandblue)}
+.covbody p{font-size:16px;color:rgba(255,255,255,0.52);max-width:64ch;line-height:1.7;font-weight:300}
+.covchips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;padding:7px 14px;
+  border-radius:100px;border:1px solid rgba(107,166,255,0.28);
+  color:rgba(255,255,255,0.42);text-transform:uppercase}
+.chip.hi{border-color:rgba(13,148,136,0.55);color:rgba(153,246,228,0.75)}
+.chip.rose{border-color:rgba(251,113,133,0.4);color:rgba(253,164,175,0.75)}
+.covrule{margin-top:44px;height:1px;background:rgba(255,255,255,0.08)}
+.covrule::after{content:'';display:block;width:120px;height:1px;
+  background:linear-gradient(90deg,var(--brandblue),transparent)}
 
-  .wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 32px}
+/* ── SHELL ── */
+.doc{max-width:900px;margin:0 auto;padding:64px 64px 96px}
+@media(max-width:700px){.doc{padding:36px 24px 72px}.cover{padding:40px 24px 44px}}
+.sec{margin-bottom:62px}
+.pagebreak{page-break-before:always;padding-top:48px;border-top:2px solid var(--bddk);margin-top:64px}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .4s ease;border-bottom:1px solid transparent}
-  nav.scrolled{background:rgba(6,8,13,0.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-  .nav-inner{max-width:1180px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between}
-  .logo{font-family:var(--serif);font-size:25px;letter-spacing:.5px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
-  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--blue-bright);box-shadow:0 0 14px var(--blue-bright)}
-  .nav-links{display:flex;gap:34px;align-items:center}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:400;letter-spacing:.3px;transition:color .25s}
-  .nav-links a:hover{color:var(--white)}
-  .btn{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.3px;color:var(--white);text-decoration:none;
-    padding:10px 22px;border-radius:100px;border:1px solid var(--border-blue);background:rgba(59,130,246,0.08);transition:all .3s;cursor:pointer;display:inline-block}
-  .btn:hover{background:rgba(59,130,246,0.2);border-color:var(--blue-bright);box-shadow:0 0 24px rgba(59,130,246,0.35)}
-  @media(max-width:820px){.nav-links a:not(.btn){display:none}}
+/* ── TYPE ── */
+.stag{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.stag::before{content:'';width:20px;height:1px;background:var(--blue)}
+.stag.teal{color:var(--teal)}.stag.teal::before{background:var(--teal)}
+.stag.rose{color:var(--rose)}.stag.rose::before{background:var(--rose)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.8vw,34px);
+  letter-spacing:-0.4px;line-height:1.15;margin-bottom:16px;color:var(--ink)}
+h2 em{font-style:italic;color:var(--bluelt)}
+h2.teal em{color:var(--teal)}h2.rose em{color:var(--rose)}
+h3{font-family:var(--serif);font-weight:400;font-size:20px;
+  letter-spacing:-0.3px;margin-bottom:8px;color:var(--ink);line-height:1.2}
+p{font-size:15px;color:#334155;line-height:1.75;margin-bottom:14px;font-weight:300}
+p b{color:var(--ink);font-weight:500}
+p:last-child{margin-bottom:0}
+hr{border:none;border-top:1px solid var(--bd);margin:52px 0}
 
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 32px 80px;position:relative}
-  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-bright);margin-bottom:34px;opacity:0;animation:rise .9s .1s forwards}
-  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,104px);line-height:1.02;letter-spacing:-1px;max-width:14ch;margin-bottom:30px}
-  .hero h1 .em{font-style:italic;color:var(--blue-bright);text-shadow:0 0 40px rgba(107,166,255,0.45)}
-  .hero h1 .l{display:inline-block;opacity:0;animation:rise 1s forwards}
-  .hero p.sub{font-size:clamp(16px,2.2vw,21px);font-weight:300;color:var(--muted);max-width:56ch;margin-bottom:44px;opacity:0;animation:rise 1s .8s forwards;line-height:1.55}
-  .hero p.sub b{color:var(--white);font-weight:500}
-  .hero-cta{display:flex;gap:16px;opacity:0;animation:rise 1s 1s forwards;flex-wrap:wrap;justify-content:center}
-  .btn-ghost{color:var(--muted);border-color:var(--border);background:transparent}
-  .btn-ghost:hover{color:var(--white);border-color:var(--border-blue);box-shadow:none}
-  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-  .scroll-cue{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--muted-dim);text-transform:uppercase;opacity:0;animation:rise 1s 1.4s forwards}
+/* ── KEY BOX ── */
+.kbox{border-radius:13px;padding:24px 28px;margin:18px 0}
+.kbox.blue{background:var(--bluepale);border:1px solid var(--bluebd)}
+.kbox.teal{background:var(--tealpale);border:1px solid var(--tealbd)}
+.kbox.amber{background:var(--amberpale);border:1px solid var(--amberbd)}
+.kbox.green{background:var(--greenpale);border:1px solid var(--greenbd)}
+.kbox.rose{background:var(--rosepale);border:1px solid var(--rosebd)}
+.kl{font-family:var(--mono);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:10px}
+.kbox.blue .kl{color:var(--blue)}.kbox.teal .kl{color:var(--teal)}
+.kbox.amber .kl{color:var(--amber)}.kbox.green .kl{color:var(--green)}
+.kbox.rose .kl{color:var(--rose)}
+.kbox p{font-size:15px;line-height:1.7;margin:0;font-weight:400;color:var(--ink)}
+.kbox p+p{margin-top:8px}
 
-  section{padding:120px 0;position:relative}
-  .tag{font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-bright);margin-bottom:24px;display:flex;align-items:center;gap:12px}
-  .tag::before{content:'';width:28px;height:1px;background:var(--blue);display:inline-block}
-  h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-0.5px;margin-bottom:28px;max-width:20ch}
-  h2 .em{font-style:italic;color:var(--blue-bright)}
-  .lead{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:64ch;line-height:1.7;font-weight:300}
-  .lead b{color:var(--white);font-weight:500}
+/* ── ARCH ── */
+.arch{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin-top:22px}
+.archrow{display:flex;align-items:stretch;border-bottom:1px solid var(--bd)}
+.archrow:last-child{border-bottom:none}
+.archlbl{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mutedlt);padding:16px 18px;min-width:110px;border-right:1px solid var(--bd);
+  display:flex;align-items:center;background:var(--page);flex-shrink:0}
+.architems{padding:14px 18px;flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.apill{font-size:13px;padding:5px 13px;border-radius:100px;font-weight:400;white-space:nowrap}
+.apblue{background:var(--bluepale);color:var(--blue);border:1px solid var(--bluebd)}
+.apteal{background:var(--tealpale);color:var(--teal);border:1px solid var(--tealbd)}
+.aprose{background:var(--rosepale);color:var(--rose);border:1px solid var(--rosebd)}
+.apgray{background:var(--page);color:var(--muted);border:1px solid var(--bd)}
+.archnote{font-family:var(--mono);font-size:11px;color:var(--mutedlt);margin-left:auto;white-space:nowrap}
 
-  /* WHY / women — moral + business */
-  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px}
-  .pillar{border:1px solid var(--border);border-radius:18px;padding:36px 34px;background:var(--glass);transition:all .4s;position:relative;overflow:hidden}
-  .pillar:hover{border-color:var(--border-blue);transform:translateY(-4px)}
-  .pillar .pk{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-bright);margin-bottom:18px}
-  .pillar h3{font-family:var(--serif);font-weight:400;font-size:27px;letter-spacing:-0.3px;margin-bottom:14px;line-height:1.2}
-  .pillar p{font-size:15px;color:var(--muted);line-height:1.7;font-weight:300}
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-  .stat{text-align:center;padding:30px 18px;border:1px solid var(--border);border-radius:16px;background:rgba(59,130,246,0.03)}
-  .stat .n{font-family:var(--serif);font-size:clamp(38px,5vw,52px);color:var(--blue-bright);line-height:1;letter-spacing:-1px;text-shadow:0 0 28px rgba(107,166,255,0.3)}
-  .stat .l{font-size:13px;color:var(--muted);font-weight:300;margin-top:14px;letter-spacing:.3px;line-height:1.4}
-  .why-quote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.4vw,34px);color:var(--white);max-width:26ch;margin:64px auto 0;line-height:1.3;text-align:center;letter-spacing:-0.3px}
-  .why-quote .em{color:var(--blue-bright);text-shadow:0 0 30px rgba(107,166,255,0.4)}
-  @media(max-width:820px){.pillars{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+/* ── MISSION PILLARS ── */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.pillar{border-radius:14px;padding:26px 24px;border:1px solid var(--bd);background:var(--white)}
+.pillar.rose{background:var(--rosepale);border-color:var(--rosebd)}
+.pillar.teal{background:var(--tealpale);border-color:var(--tealbd)}
+.pillar .pk{font-family:var(--mono);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:12px}
+.pillar.rose .pk{color:var(--rose)}.pillar.teal .pk{color:var(--teal)}
+.pillar h3{font-family:var(--serif);font-size:22px;margin-bottom:10px;letter-spacing:-0.2px}
+.pillar p{font-size:14px;color:var(--muted);margin:0;line-height:1.65}
+@media(max-width:600px){.pillars{grid-template-columns:1fr}}
 
-  /* company principles */
-  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
-  .principle{border:1px solid var(--border);border-radius:16px;padding:32px 28px;background:var(--glass);transition:all .4s}
-  .principle:hover{border-color:var(--border-blue);background:rgba(59,130,246,0.04);transform:translateY(-4px)}
-  .principle .num{font-family:var(--mono);font-size:12px;color:var(--blue-bright);margin-bottom:18px;letter-spacing:1px}
-  .principle h3{font-family:var(--serif);font-weight:400;font-size:24px;margin-bottom:12px;letter-spacing:-0.3px}
-  .principle p{font-size:14.5px;color:var(--muted);line-height:1.65;font-weight:300}
-  @media(max-width:820px){.principles{grid-template-columns:1fr}}
+/* ── SUMMARY NUMBERS ── */
+.sums{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.snum{text-align:center;padding:20px 12px;border:1px solid var(--bd);
+  border-radius:13px;background:var(--white)}
+.snum .n{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);
+  color:var(--bluelt);line-height:1;letter-spacing:-1px;margin-bottom:8px}
+.snum .n.teal{color:var(--teal)}.snum .n.amber{color:var(--amber)}
+.snum .n.rose{color:var(--rose)}.snum .n.green{color:var(--green)}
+.snum .l{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.4}
+@media(max-width:640px){.sums{grid-template-columns:1fr 1fr}}
 
-  /* products */
-  .prod-head{text-align:center;display:flex;flex-direction:column;align-items:center;margin-bottom:24px}
-  .prod-head .tag{justify-content:center}
-  .prod-sub{text-align:center;color:var(--muted);font-size:16px;max-width:58ch;margin:0 auto 64px;font-weight:300;line-height:1.65}
-  .products{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-  .product{position:relative;border:1px solid var(--border);border-radius:22px;padding:44px 40px;
-    background:linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005));overflow:hidden;transition:all .5s}
-  .product::before{content:'';position:absolute;inset:0;border-radius:22px;padding:1px;
-    background:linear-gradient(160deg,var(--glow-c),transparent 55%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;transition:opacity .5s}
-  .product:hover{transform:translateY(-6px)}
-  .product:hover::before{opacity:1}
-  .product .glow{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(80px);top:-120px;right:-80px;opacity:.35;background:var(--glow-c);transition:opacity .5s}
-  .product:hover .glow{opacity:.6}
-  .p-shruti{--glow-c:rgba(59,130,246,0.6)}
-  .p-utkarsh{--glow-c:rgba(107,166,255,0.55)}
-  .p-name{font-family:var(--serif);font-size:40px;font-weight:400;letter-spacing:-0.5px;margin-bottom:4px;display:flex;align-items:baseline;gap:14px;position:relative}
-  .p-role{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-bright)}
-  .p-verb{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--blue-bright);margin-bottom:16px;position:relative;text-shadow:0 0 24px rgba(107,166,255,0.3)}
-  .p-plain{font-size:16px;color:var(--white);font-weight:400;line-height:1.6;margin-bottom:14px;position:relative}
-  .p-desc{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:26px;position:relative}
-  .p-feats{list-style:none;margin-bottom:28px;position:relative}
-  .p-feats li{font-size:14.5px;color:var(--white);font-weight:300;padding:11px 0;border-top:1px solid var(--border);display:flex;align-items:center;gap:12px}
-  .p-feats li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue-bright);box-shadow:0 0 8px var(--blue-bright);flex-shrink:0}
-  .p-pill{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:1px;padding:8px 16px;border-radius:100px;border:1px solid var(--border-blue);background:rgba(59,130,246,0.07);color:var(--blue-bright);position:relative}
-  @media(max-width:820px){.products{grid-template-columns:1fr}}
+/* ── DF GRANT BOX ── */
+.grant-box{background:var(--brand);border-radius:16px;padding:36px 40px;
+  margin-top:24px;position:relative;overflow:hidden}
+.grant-box::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 0% 0%,rgba(59,130,246,0.2),transparent 55%)}
+.grant-box::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 100% 100%,rgba(13,148,136,0.15),transparent 60%)}
+.gb-inner{position:relative;z-index:1}
+.gb-label{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--brandblue);margin-bottom:16px}
+.gb-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,32px);
+  color:#fff;letter-spacing:-0.5px;margin-bottom:16px;line-height:1.15}
+.gb-title em{font-style:italic;color:var(--brandblue)}
+.gb-desc{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:58ch;font-weight:300}
+.gb-rows{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.gb-row{border:1px solid rgba(107,166,255,0.2);border-radius:10px;
+  padding:16px 18px;background:rgba(255,255,255,0.04)}
+.gb-row .gr-n{font-family:var(--serif);font-size:22px;color:var(--brandblue);
+  letter-spacing:-0.5px;margin-bottom:4px}
+.gb-row .gr-l{font-size:13px;color:rgba(255,255,255,0.45);font-family:var(--mono);
+  letter-spacing:.5px;line-height:1.4}
+@media(max-width:600px){.gb-rows{grid-template-columns:1fr 1fr}}
 
-  /* how it works */
-  .pyramid{margin-top:48px;font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;line-height:2.4;text-align:center}
-  .pyramid .step{color:var(--white)}
-  .pyramid .arr{color:var(--blue);margin:0 10px}
-  .flow{display:flex;align-items:stretch;gap:0;margin-top:28px;flex-wrap:wrap;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--glass)}
-  .flow-step{flex:1;min-width:150px;padding:30px 26px;border-right:1px solid var(--border);position:relative}
-  .flow-step:last-child{border-right:none}
-  .flow-step .fs-k{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--muted-dim);margin-bottom:14px}
-  .flow-step .fs-t{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:8px;letter-spacing:-0.3px}
-  .flow-step .fs-d{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55}
-  .flow-step.accent .fs-t{color:var(--blue-bright)}
-  @media(max-width:760px){.flow-step{border-right:none;border-bottom:1px solid var(--border)}.pyramid{font-size:11px}.pyramid .arr{margin:0 5px}}
+/* ── EQUITY TABLE ── */
+.eqtable{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}
+.eqtable thead tr{background:var(--ink2);color:#fff}
+.eqtable thead th{padding:13px 18px;text-align:left;font-family:var(--mono);
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400}
+.eqtable tbody tr{border-bottom:1px solid var(--bd);transition:background .15s}
+.eqtable tbody tr:hover{background:var(--tealpale)}
+.eqtable td{padding:14px 18px;vertical-align:top;line-height:1.5;font-weight:300}
+.eqtable td:first-child{font-family:var(--mono);font-size:12px;color:var(--teal);width:70px}
+.eqtable td.when{font-family:var(--mono);font-size:12px;color:var(--muted);width:100px;white-space:nowrap}
+.eqtable td.pct{font-family:var(--mono);font-size:14px;font-weight:700;width:60px;
+  text-align:right;color:var(--teal)}
+.eqtable td.tot{font-family:var(--mono);font-size:14px;font-weight:700;
+  width:70px;text-align:right;color:var(--teal)}
+.eqtable .foundrow td{background:#F0FDFA}
+.eqtable .mvprow td{background:#ECFDF5;font-weight:500}
+.eqtable .goalrow td{background:var(--ink);color:#fff}
+.eqtable .goalrow td.tot{color:var(--brandblue);font-size:16px}
+.eqtable .dfrow td{background:var(--bluepale)}
+.eqtable .dfrow td.tot{color:var(--blue)}
 
-  footer{border-top:1px solid var(--border);padding:80px 0 50px;position:relative;z-index:2;margin-top:40px}
-  .foot-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
-  .foot-brand{max-width:34ch}
-  .foot-brand .logo{margin-bottom:18px}
-  .foot-brand p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.6}
-  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
-  .foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted-dim);margin-bottom:18px;font-weight:400}
-  .foot-col a{display:block;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:12px;font-weight:300;transition:color .25s}
-  .foot-col a:hover{color:var(--blue-bright)}
-  .foot-bottom{margin-top:60px;padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  .foot-bottom span{font-size:13px;color:var(--muted-dim);font-family:var(--mono);letter-spacing:.5px}
+/* ── EQUITY BARS ── */
+.eqbars{margin-top:22px;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--white)}
+.eqbhead{background:var(--ink2);color:#fff;padding:14px 20px;
+  font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.eqbrows{padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.eqbrow{display:flex;align-items:center;gap:12px}
+.eqblabel{font-family:var(--mono);font-size:11px;color:var(--muted);width:56px;text-align:right;flex-shrink:0}
+.eqbwrap{flex:1;height:14px;background:var(--page);border-radius:4px;overflow:hidden;border:1px solid var(--bd)}
+.eqbfill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),#5EEAD4)}
+.eqbpct{font-family:var(--mono);font-size:12px;color:var(--teal);font-weight:700;width:36px;flex-shrink:0}
+.eqbevent{font-size:12.5px;color:var(--muted);flex:1}
+.df-bar{background:linear-gradient(90deg,var(--bluelt),#93C5FD)!important}
 
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:translateY(0)}
-  .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.orb{animation:none}*{animation-duration:.01ms!important}}
+/* ── QUARTERS ── */
+.quarters{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.qcard{border:1px solid var(--bd);border-radius:12px;padding:20px 16px;
+  background:var(--white);position:relative;overflow:hidden}
+.qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--qc,var(--bluelt))}
+.qn{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mutedlt);margin-bottom:8px}
+.qt{font-family:var(--serif);font-size:18px;letter-spacing:-0.2px;margin-bottom:6px;color:var(--ink)}
+.qobj{font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.qcard ul{list-style:none}
+.qcard ul li{font-size:12.5px;color:var(--ink);padding:5px 0;border-top:1px solid var(--bd);
+  line-height:1.45;font-weight:300}
+.qs{font-family:var(--mono);font-size:11px;margin-top:12px;padding:6px 10px;
+  border-radius:6px;display:inline-block;font-weight:400}
+.q1{--qc:#94A3B8}.q2{--qc:#10B981}.q3{--qc:#3B82F6}.q4{--qc:#8B5CF6}
+@media(max-width:640px){.quarters{grid-template-columns:1fr 1fr}}
+
+/* ── REV TABLE ── */
+.revgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.revtbl{border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.revtbl .rh{background:var(--ink2);color:#fff;padding:12px 18px;
+  font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.revtbl table{width:100%;border-collapse:collapse;font-size:14px}
+.revtbl tr{border-bottom:1px solid var(--bd)}
+.revtbl tr:last-child{border-bottom:none}
+.revtbl tr:hover{background:var(--bluepale)}
+.revtbl td{padding:11px 18px;vertical-align:middle}
+.revtbl td:last-child{font-family:var(--mono);font-size:12.5px;color:var(--blue);
+  text-align:right;white-space:nowrap;font-weight:700}
+.sub{font-size:11.5px;color:var(--muted);display:block;margin-top:2px}
+.revtbl .tr td{background:var(--ink);color:#fff;font-weight:500}
+.revtbl .tr td:last-child{color:var(--brandblue)}
+@media(max-width:640px){.revgrid{grid-template-columns:1fr}}
+
+/* ── COST TABLE ── */
+.costtbl{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-top:20px}
+.costtbl table{width:100%;border-collapse:collapse;font-size:14.5px}
+.costtbl thead tr{background:var(--ink2);color:#fff}
+.costtbl thead th{padding:13px 20px;text-align:left;font-family:var(--mono);
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400}
+.costtbl tbody tr{border-bottom:1px solid var(--bd)}
+.costtbl tbody tr:hover{background:var(--bluepale)}
+.costtbl td{padding:13px 20px;font-weight:300}
+.costtbl td:nth-child(2),.costtbl td:nth-child(3){font-family:var(--mono);font-size:13px;
+  color:var(--blue);text-align:right;white-space:nowrap}
+.costtbl .tr td{background:var(--ink);color:#fff;font-weight:500}
+.costtbl .tr td:nth-child(2),.costtbl .tr td:nth-child(3){color:var(--brandblue)}
+
+/* ── BREAK-EVEN ── */
+.bechart{margin-top:28px;border:1px solid var(--bd);border-radius:14px;overflow:hidden;background:var(--white)}
+.behead{background:var(--ink2);color:#fff;padding:16px 22px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.behead span{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.belegend{display:flex;gap:18px}
+.bll{display:flex;align-items:center;gap:7px;font-size:12px;font-family:var(--mono);
+  letter-spacing:.5px;color:rgba(255,255,255,0.6)}
+.bld{width:10px;height:10px;border-radius:2px}
+.berows{padding:22px}
+.berow{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.berow:last-child{margin-bottom:0}
+.bemo{font-family:var(--mono);font-size:12px;color:var(--muted);width:40px;flex-shrink:0;text-align:right}
+.bebars{flex:1}
+.bebar{height:12px;border-radius:3px;background:linear-gradient(90deg,#3B82F6,#60A5FA)}
+.beval{font-family:var(--mono);font-size:12px;color:var(--blue);width:48px;text-align:right;flex-shrink:0}
+.betag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:100px;white-space:nowrap}
+.betag.green{background:#DCFCE7;color:#16A34A}
+.betag.blue{background:var(--bluepale);color:var(--blue)}
+.becostline{display:flex;align-items:center;gap:14px;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--bd)}
+.becostbar{flex:1;height:3px;background:var(--bddk);border-radius:2px;position:relative}
+.becostmark{position:absolute;top:-16px;right:0;font-family:var(--mono);font-size:11px;color:var(--mutedlt)}
+
+/* ── FY28 ── */
+.fy28{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-top:20px}
+.fy28 table{width:100%;border-collapse:collapse;font-size:14px}
+.fy28 thead tr{background:var(--ink2);color:#fff}
+.fy28 thead th{padding:13px 20px;text-align:left;font-family:var(--mono);
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400}
+.fy28 tbody tr{border-bottom:1px solid var(--bd)}
+.fy28 tbody tr:hover{background:var(--bluepale)}
+.fy28 td{padding:12px 20px;font-weight:300}
+.fy28 td:last-child{font-family:var(--mono);font-size:13px;color:var(--blue);
+  text-align:right;font-weight:700}
+.fy28 .tr td{background:var(--ink);color:#fff;font-weight:500}
+.fy28 .tr td:last-child{color:var(--brandblue)}
+.fy28 .expr td{background:#F1F5F9;color:var(--muted)}
+.fy28 .expr td:last-child{color:var(--muted)}
+.fy28 .gapr td{background:#FFF7ED;color:#92400E}
+.fy28 .gapr td:last-child{color:#B45309;font-weight:700}
+
+/* ── GAP ── */
+.gapopts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+.gapopt{border:1px solid var(--bd);border-radius:11px;padding:18px 20px;background:var(--white)}
+.gon{font-family:var(--mono);font-size:11px;color:var(--teal);letter-spacing:1.5px;margin-bottom:8px}
+.gapopt h4{font-family:var(--serif);font-weight:400;font-size:18px;margin-bottom:4px;letter-spacing:-0.2px}
+.gapopt p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
+.goval{font-family:var(--mono);font-size:14px;color:var(--teal);font-weight:700;margin-top:10px}
+@media(max-width:600px){.gapopts{grid-template-columns:1fr}}
+
+/* ── PIVOT ── */
+.pivot{background:linear-gradient(135deg,var(--tealpale),var(--bluepale));
+  border:2px solid var(--tealbd);border-radius:14px;padding:26px 28px;
+  margin:0 0 32px 68px}
+.pivot .pvtitle{font-family:var(--serif);font-size:22px;letter-spacing:-0.3px;margin-bottom:8px}
+.pivot p{font-size:14px;color:var(--muted);margin:0;line-height:1.6}
+.pivot .pvmetrics{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.pvmet{display:flex;flex-direction:column;gap:2px}
+.pvmet .pvn{font-family:var(--mono);font-size:16px;color:var(--teal);font-weight:700}
+.pvmet .pvl{font-size:12px;color:var(--mutedlt);font-family:var(--mono);letter-spacing:.5px}
+
+/* ── ROLLOUT PHASES ── */
+.rollout{margin-top:28px;position:relative}
+.rollout::before{content:'';position:absolute;left:0;top:28px;bottom:28px;
+  width:2px;background:var(--tealbd);border-radius:1px}
+.rphase{display:flex;gap:0;margin-bottom:0}
+.rphase:last-child .rpbody{border-bottom:none;padding-bottom:0}
+.rpmarker{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px}
+.rpdot{width:14px;height:14px;border-radius:50%;border:2px solid var(--teal);
+  background:var(--white);flex-shrink:0;z-index:1;margin-top:14px;box-shadow:0 0 0 4px var(--page)}
+.rpdot.active{background:var(--teal);box-shadow:0 0 0 4px var(--page),0 0 0 7px var(--tealbd)}
+.rpbody{padding:10px 0 32px 20px;flex:1;border-bottom:1px solid var(--bd)}
+.rpwhen{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px}
+.rpbody h3{font-size:20px;margin-bottom:8px;color:var(--ink)}
+.rpbody p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.65}
+.rppills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.rppill{font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:100px;
+  background:var(--tealpale);color:var(--teal);border:1px solid var(--tealbd)}
+
+/* ── ASKS ── */
+.asklist{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.ask{display:flex;gap:16px;padding:20px 22px;border-radius:12px;
+  border:1px solid var(--bd);background:var(--white)}
+.askn{width:34px;height:34px;border-radius:50%;background:var(--bluepale);
+  border:1px solid var(--bluebd);display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-size:12px;
+  color:var(--blue);flex-shrink:0;margin-top:2px}
+.askn.teal{background:var(--tealpale);border-color:var(--tealbd);color:var(--teal)}
+.askn.rose{background:var(--rosepale);border-color:var(--rosebd);color:var(--rose)}
+.askbody strong{font-size:15px;font-weight:500;color:var(--ink);display:block;margin-bottom:4px}
+.askbody p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
+
+/* ── CLOSING ── */
+.closing{background:var(--brand);border-radius:16px;padding:48px;
+  margin-top:48px;position:relative;overflow:hidden}
+.closing::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 100% 0%,rgba(59,130,246,0.2),transparent 60%)}
+.closing::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 40% 50% at 0% 100%,rgba(190,24,93,0.12),transparent 55%)}
+.closing blockquote{font-family:var(--serif);font-style:italic;
+  font-size:clamp(18px,2.8vw,25px);color:#fff;line-height:1.5;
+  position:relative;z-index:1;letter-spacing:-0.3px;max-width:38ch}
+.closing blockquote em{color:var(--brandblue)}
+.csig{margin-top:30px;position:relative;z-index:1;display:flex;gap:40px;flex-wrap:wrap}
+.csigblock{display:flex;flex-direction:column;gap:4px}
+.csigname{font-family:var(--serif);font-size:18px;color:#fff;letter-spacing:-0.2px}
+.csigrole{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.38);
+  letter-spacing:1.5px;text-transform:uppercase}
+
+.foot{background:var(--brand);padding:28px 64px;display:flex;
+  justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footl{font-family:var(--serif);font-size:14px;letter-spacing:3px;
+  color:var(--brandblue);display:flex;align-items:center;gap:8px}
+.footl .dot{width:6px;height:6px;border-radius:50%;background:var(--brandblue);
+  box-shadow:0 0 8px var(--brandblue)}
+.foot p{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:.5px}
+/* ── ENGINE DETAIL CARDS ── */
+.engcards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+.engcard{border-radius:16px;padding:28px 26px;border:1px solid var(--bd);
+  background:var(--white);position:relative;overflow:hidden}
+.engcard::before{content:'';position:absolute;top:0;left:0;right:0;
+  height:4px;border-radius:16px 16px 0 0}
+.engcard.shruti::before{background:linear-gradient(90deg,var(--teal),#5EEAD4)}
+.engcard.utkarsh::before{background:linear-gradient(90deg,var(--bluelt),#93C5FD)}
+.ec-tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:8px}
+.engcard.shruti .ec-tag{color:var(--teal)}
+.engcard.utkarsh .ec-tag{color:var(--bluelt)}
+.ec-name{font-family:var(--serif);font-size:30px;letter-spacing:-0.5px;
+  margin-bottom:6px;color:var(--ink)}
+.ec-verb{font-size:13.5px;color:var(--muted);margin-bottom:14px;
+  font-style:italic;line-height:1.4}
+.ec-desc{font-size:14px;color:#334155;line-height:1.65;margin-bottom:16px;font-weight:300}
+.ec-section-label{font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--mutedlt);margin:14px 0 8px}
+.ec-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.ecpill{font-size:12.5px;padding:4px 11px;border-radius:100px;
+  background:var(--page);color:var(--muted);border:1px solid var(--bd);white-space:nowrap}
+.ecpill.strong{background:var(--tealpale);color:var(--teal);border-color:var(--tealbd)}
+.engcard.utkarsh .ecpill.strong{background:var(--bluepale);color:var(--bluelt);border-color:var(--bluebd)}
+.ec-props{display:flex;flex-direction:column;gap:7px}
+.ec-prop{display:flex;gap:10px;align-items:baseline;font-size:13.5px}
+.ecp-k{font-family:var(--mono);font-size:11.5px;color:var(--teal);
+  min-width:90px;flex-shrink:0;font-weight:700}
+.engcard.utkarsh .ecp-k{color:var(--bluelt)}
+.ecp-v{color:var(--muted);font-weight:300}
+.ec-qa{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.ec-q{display:flex;flex-direction:column;gap:2px;padding:9px 12px;
+  border-radius:8px;background:var(--bluepale);border:1px solid var(--bluebd)}
+.ecq-q{font-size:13.5px;font-weight:500;color:var(--ink)}
+.ecq-a{font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.3px}
+@media(max-width:640px){.engcards{grid-template-columns:1fr}}
+
+/* ── MEMORY PIPELINE ── */
+.mpipe{margin-top:32px;border:1px solid var(--bd);border-radius:14px;
+  overflow:hidden;background:var(--white)}
+.mp-label{background:var(--ink2);color:#fff;padding:14px 22px;
+  font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.mp-stages{padding:22px;display:flex;align-items:center;
+  gap:6px;flex-wrap:nowrap;overflow-x:auto}
+.mp-stage{flex:1;min-width:90px;border-radius:10px;padding:14px 10px;
+  text-align:center;border:1px solid var(--bd)}
+.s0{background:#F8FAFC;border-color:var(--bd)}
+.s1{background:#F0FDFA;border-color:var(--tealbd)}
+.s2{background:#ECFDF5;border-color:#A7F3D0}
+.s3{background:#D1FAE5;border-color:#6EE7B7}
+.s4{background:#A7F3D0;border-color:#34D399}
+.s5{background:var(--teal);border-color:var(--teal)}
+.mps-title{font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.s0 .mps-title{color:var(--muted)}
+.s1 .mps-title,.s2 .mps-title,.s3 .mps-title,.s4 .mps-title{color:var(--teal)}
+.s5 .mps-title{color:#fff}
+.mps-items{font-size:11px;color:var(--muted);line-height:1.5;font-family:var(--mono)}
+.s5 .mps-items{color:rgba(255,255,255,0.7)}
+.mp-arrow{font-size:16px;color:var(--tealbd);flex-shrink:0;font-weight:300}
+
+/* ── CONNECTION FLOW ── */
+.connflow{margin-top:22px;display:flex;align-items:center;
+  gap:0;border:1px solid var(--bd);border-radius:14px;overflow:hidden;background:var(--white)}
+.cf-box{padding:20px 22px;text-align:center;font-family:var(--serif);
+  font-size:20px;letter-spacing:-0.3px;flex-shrink:0;min-width:120px}
+.cf-box span{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.shruti-cf{background:var(--tealpale);border-right:1px solid var(--tealbd)}
+.shruti-cf span{color:var(--teal)}
+.utkarsh-cf{background:var(--bluepale);border-right:1px solid var(--bluebd)}
+.utkarsh-cf span{color:var(--bluelt)}
+.cf-arrow{padding:0 16px;display:flex;flex-direction:column;
+  align-items:center;gap:4px;flex-shrink:0}
+.cf-arr-line{font-size:18px;color:var(--mutedlt)}
+.cf-arr-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;
+  color:var(--mutedlt);text-transform:uppercase}
+.cf-outputs{flex:1;padding:14px 18px;display:flex;
+  flex-wrap:wrap;gap:8px;align-items:center}
+.cf-out{font-size:13px;padding:6px 14px;border-radius:100px;
+  background:var(--page);color:var(--muted);border:1px solid var(--bd);
+  font-family:var(--mono);letter-spacing:.5px}
+@media(max-width:700px){.connflow{flex-direction:column;align-items:stretch}
+  .shruti-cf,.utkarsh-cf{border-right:none;border-bottom:1px solid var(--bd)}}
+
+.caveat{font-family:var(--mono);font-size:11.5px;color:var(--mutedlt);
+  border-top:1px solid var(--bd);padding-top:16px;line-height:1.7;margin-top:44px}
+@media print{
+  .cover,.closing,.foot,.grant-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
 
-<div class="bg-grid"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="logo" style="letter-spacing:3px"><span class="dot"></span>ACHINTYA</a>
+<!-- COVER -->
+<div class="cover">
+  <div class="covtop">
+    <div class="covlogos">
+      <div class="covbrand"><span class="dot"></span>MIAF</div>
+      <span class="covsep">&</span>
+      <div class="covdt">DT</div>
+    </div>
+    <div class="covmeta">
+      Proposed to: Drishtee Foundation (DF)<br>
+      FY 2026-27 to FY 2027-28<br>
+      Confidential
+    </div>
   </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="eyebrow">Achintya · Memory intelligence</div>
-  <h1>
-    <span class="l" style="animation-delay:.15s">How</span>
-    <span class="l" style="animation-delay:.28s">should</span>
-    <span class="l" style="animation-delay:.41s">AI</span>
-    <span class="l em" style="animation-delay:.54s">remember</span>
-    <span class="l" style="animation-delay:.67s">the</span>
-    <span class="l" style="animation-delay:.78s">world?</span>
-  </h1>
-  <p class="sub">We begin with the people the world overlooks first — the <b>women of rural Bharat</b> — and build the memory and reasoning that helps them rise.</p>
-  <div class="hero-cta">
-    <a href="#why" class="btn">Why we begin here</a>
-    <a href="#products" class="btn btn-ghost">See the engines</a>
+  <div class="covbody">
+    <div class="covlabel">Business Proposal — Vision, Revenue & Sustainability</div>
+    <h1>For the women of rural Bharat — and the <em>systems that serve them.</em></h1>
+    <p>MIAF builds the R&D engines — Smriti and Utkarsh — the intelligence infrastructure that powers everything. DT builds the interfaces: <b>GOI as the flagship product</b>, Shruti the public character, and the full commercial stack. DF forms MIAF, funds it, and holds 49% as the founding institution. This is the full plan.</p>
+    <div class="covchips">
+      <span class="chip rose">Rural women — the mission</span>
+      <span class="chip hi">DF forms MIAF · ₹50L grant</span>
+      <span class="chip hi">MIAF starts today · Forheen 1%</span>
+      <span class="chip">GOI — DT flagship product</span>
+      <span class="chip">MVP July 2026 · Forheen +10%</span>
+      <span class="chip">DT break-even Sep 2026</span>
+      <span class="chip">Forheen → 51% at ₹100Cr milestone</span>
+    </div>
   </div>
-  <div class="scroll-cue">remember · reason · decide</div>
-</header>
+  <div class="covrule"></div>
+</div>
 
-<!-- ===== WHY: women, moral + business first ===== -->
-<section id="why">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">Why we begin here</div></div>
-    <div class="reveal d1"><h2>Bharat's women hold up its villages. Its systems <span class="em">cannot see them.</span></h2></div>
-    <div class="reveal d2"><p class="lead">The loan repaid on time. The crop sold at the mandi. The skill learned, the household carried, the group led. A rural woman's economic life is <b>real — and almost entirely invisible</b> to the institutions that could fund, serve, or uplift her. That invisibility is both a wrong to correct and an opportunity no one has captured.</p></div>
+<div class="doc">
 
-    <div class="pillars">
-      <div class="pillar reveal d1">
-        <div class="pk">The moral case</div>
-        <h3>A life that deserves to be seen</h3>
-        <p>When her work leaves no record, she is denied credit she has earned, schemes she qualifies for, and a say in her own future. Making her visible, on her own terms and with her consent, is simply right.</p>
+<!-- ══ THE MISSION ══ -->
+<div class="sec">
+  <div class="stag rose">Why we build</div>
+  <h2 class="rose">Rural women carry their communities. The systems around them <em>cannot see them.</em></h2>
+  <p>A rural woman repays her SHG loan on time, every month, for six years. She grows and sells produce. She runs a side income. She mentors three others. And yet — to a bank, a government scheme, or a supply chain — she does not exist. Her economic life is real and invisible at once.</p>
+  <p>This invisibility is not a technology problem. It is a <b>memory and infrastructure problem.</b> The world has no system that remembers her work, recognises her capability, or helps her take the next best step toward a better life. DT and MIAF are built to change that — together.</p>
+
+  <div class="pillars">
+    <div class="pillar rose">
+      <div class="pk">The moral case</div>
+      <h3>Her work deserves to be seen</h3>
+      <p>When her economic activity leaves no record, she is denied credit she earned, schemes she qualifies for, and a say in her own future. Making her visible — on her own terms, with her consent — is simply right.</p>
+    </div>
+    <div class="pillar teal">
+      <div class="pk">The business case</div>
+      <h3>The largest unserved market in India</h3>
+      <p>Tens of millions of women generate real economic value that no system can currently measure or reach. Turn that invisible activity into trusted knowledge, and you unlock a market and a movement at once.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ THE ECOSYSTEM ══ -->
+<div class="sec">
+  <div class="stag">The ecosystem</div>
+  <h2>Two layers. One purpose. <em>Enabled by DF.</em></h2>
+  <p>MIAF builds the R&D engines — Smriti and Utkarsh. Smriti is not just a memory system: it is a full R&D platform covering voice modelling, acoustic research, Indic NLP, knowledge graph systems, and data pipelines. Utkarsh is the optimized decision engine built on Smriti's data. DT builds the interfaces: <b>GOI</b> is the flagship institutional analytics product; <b>Shruti</b> is DT's public-facing character — the voice and chatbot persona rural women know and trust, built on Smriti and Utkarsh underneath. Spandnaad and other DT platforms draw on MIAF's engines for intelligence. DF forms MIAF, anchors it institutionally, and holds 49%.</p>
+
+  <div class="arch">
+    <div class="archrow">
+      <div class="archlbl">MIAF R&D</div>
+      <div class="architems">
+        <span class="apill apteal">Smriti — R&D engine</span>
+        <span class="apill apteal">Utkarsh — Decision engine</span>
+        <span class="archnote">R&D · powers all interfaces + external</span>
       </div>
-      <div class="pillar reveal d2">
-        <div class="pk">The business case</div>
-        <h3>The largest market no one can see</h3>
-        <p>Tens of millions of women generate real economic value that no system can currently measure or reach. Turn that invisible activity into trusted, structured knowledge, and you unlock a market and a movement at once.</p>
+    </div>
+    <div class="archrow">
+      <div class="archlbl">DT</div>
+      <div class="architems">
+        <span class="apill apblue" style="font-weight:500;border-width:2px">GOI — flagship</span>
+        <span class="apill apblue">Shruti — public character</span>
+        <span class="apill apblue">Spandnaad</span>
+        <span class="apill apblue">Dhavak · COS · HUB · Karmasetu</span>
+        <span class="archnote">Commercial · break-even Sep '26</span>
       </div>
     </div>
-
-    <div class="stats">
-      <div class="stat reveal d1"><div class="n">90M+</div><div class="l">women in self-help groups across India</div></div>
-      <div class="stat reveal d2"><div class="n">640K+</div><div class="l">villages, most economically unrecorded</div></div>
-      <div class="stat reveal d3"><div class="n">~50%</div><div class="l">of the rural economy runs through women</div></div>
-    </div>
-
-    <div class="reveal d2"><p class="why-quote">Opportunity is everywhere. We build the memory to <span class="em">recognise it</span> — and the intelligence to act on it.</p></div>
-  </div>
-</section>
-
-<!-- ===== COMPANY: brief bridge ===== -->
-<section id="company">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">What Achintya does</div></div>
-    <div class="reveal d1"><h2>To serve them, we solved a harder problem: <span class="em">how AI remembers.</span></h2></div>
-    <div class="reveal d2"><p class="lead">Today's AI forgets everything the moment a conversation ends, and the industry's answer is ever-larger context windows. We think that's the wrong answer. The real challenge is <b>remembering well over years</b> — turning voice, events, and evidence into knowledge a machine can reason over. So Achintya is a <b>memory-intelligence company</b>, not a language-model company. We build two engines: one to remember, one to decide.</p></div>
-
-    <div class="principles">
-      <div class="principle reveal d1"><div class="num">01</div><h3>Memory, not bigger context</h3><p>Intelligence scales by remembering, compressing, and connecting — the way a mind does, not by holding more at once.</p></div>
-      <div class="principle reveal d2"><div class="num">02</div><h3>Evidence, not just answers</h3><p>Every memory carries where it came from — source, consent, and time. Knowledge you can trace is knowledge you can trust.</p></div>
-      <div class="principle reveal d3"><div class="num">03</div><h3>Decisions, not dashboards</h3><p>Memory only matters if it helps someone act. Our engines turn what's remembered into the next best step forward.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRODUCTS: as understandable tech ===== -->
-<section id="products">
-  <div class="wrap">
-    <div class="prod-head">
-      <div class="reveal"><div class="tag">The products</div></div>
-      <div class="reveal d1"><h2>Two engines, in plain terms.</h2></div>
-    </div>
-    <p class="prod-sub reveal d1">One listens and remembers. One thinks and recommends. Together they take a spoken moment in a village and turn it into a decision that moves a life forward.</p>
-
-    <div class="products">
-      <div class="product p-shruti reveal d1">
-        <div class="glow"></div>
-        <div class="p-name">Shruti <span class="p-role">Memory engine</span></div>
-        <div class="p-verb">It remembers.</div>
-        <p class="p-plain">Shruti listens to a voice and turns scattered moments — a sale, a repayment, a skill learned — into lasting, trustworthy memory it never loses.</p>
-        <p class="p-desc">Under the hood: it processes and stores voice, builds a knowledge graph from many sources, and keeps every fact tied to its origin — with consent, security, and governance built in.</p>
-        <ul class="p-feats">
-          <li>Voice processing &amp; storage</li>
-          <li>Knowledge graph from many sources</li>
-          <li>Provenance, consent &amp; data lineage</li>
-          <li>Security &amp; governance by design</li>
-        </ul>
-        <span class="p-pill">Contribute to the pipeline →</span>
+    <div class="archrow">
+      <div class="archlbl">DF</div>
+      <div class="architems">
+        <span class="apill aprose">Forms &amp; funds MIAF</span>
+        <span class="apill aprose">49% of MIAF</span>
+        <span class="apill apgray">Proving ground</span>
+        <span class="apill apgray">Institutional anchor</span>
+        <span class="archnote">This proposal is addressed to DF</span>
       </div>
-
-      <div class="product p-utkarsh reveal d2">
-        <div class="glow"></div>
-        <div class="p-name">Utkarsh <span class="p-role">Decision engine</span></div>
-        <div class="p-verb">It decides.</div>
-        <p class="p-plain">Utkarsh reads everything Shruti remembers and answers the question that matters: given where you are, what is the next best step toward a better future?</p>
-        <p class="p-desc">Under the hood: an agentic AI that reasons over memory and the wider village ecosystem to forecast, spot opportunity, and recommend — for institutions and individuals alike.</p>
-        <ul class="p-feats">
-          <li>Reasoning &amp; forecasting</li>
-          <li>Opportunity detection</li>
-          <li>Recommendations at any stage</li>
-          <li>Generates its own data sources</li>
-        </ul>
-        <span class="p-pill">Token-based usage</span>
+    </div>
+    <div class="archrow">
+      <div class="archlbl">End</div>
+      <div class="architems">
+        <span class="apill aprose">Rural women</span>
+        <span class="apill apgray">Village communities</span>
+        <span class="apill apgray">Institutions</span>
+        <span class="archnote">The people this exists for</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section id="approach">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">How it works</div></div>
-    <div class="reveal d1"><h2>From a voice — to <span class="em">knowledge</span> that acts.</h2></div>
-    <div class="reveal d2"><p class="lead">Raw voice rarely stays raw. Shruti distils it through a memory pyramid — each layer more compact and more meaningful than the last — until it becomes a knowledge graph Utkarsh can reason over.</p></div>
+  <div class="sums" style="margin-top:24px">
+    <div class="snum"><div class="n rose">Today</div><div class="l">DF forms MIAF<br>₹50L founding grant</div></div>
+    <div class="snum"><div class="n teal">Jul '26</div><div class="l">MIAF MVP · Forheen moves full-time<br>+10% equity · ₹2L salary</div></div>
+    <div class="snum"><div class="n">Sep '26</div><div class="l">DT break-even<br>₹12L/month</div></div>
+    <div class="snum"><div class="n amber">₹100Cr</div><div class="l">MIAF milestone<br>Forheen holds 51%</div></div>
+  </div>
+</div>
 
-    <div class="reveal d2">
-      <div class="pyramid">
-        <span class="step">Voice</span><span class="arr">→</span>
-        <span class="step">Facts</span><span class="arr">→</span>
-        <span class="step">Events</span><span class="arr">→</span>
-        <span class="step">Patterns</span><span class="arr">→</span>
-        <span class="step">Knowledge graph</span>
+<hr>
+
+<!-- ══ DF FOUNDING ROLE ══ -->
+<div class="sec">
+  <div class="stag rose">DF — founding role in MIAF</div>
+  <h2 class="rose">DF doesn't just support MIAF. <em>DF forms it.</em></h2>
+  <p>MIAF is incorporated by Drishtee Foundation as the founding institution. DF holds 49% of MIAF permanently as its institutional stake — the anchor that gives MIAF credibility with grant bodies, government missions, and venture investors. DF provides a founding grant of ₹50 lakhs to fund the first twelve months of MIAF's operations — covering Forheen's operational expense, infrastructure, product development, and a working capital reserve.</p>
+
+  <div class="grant-box">
+    <div class="gb-inner">
+      <div class="gb-label">DF founding grant to MIAF</div>
+      <div class="gb-title">₹50 Lakhs — <em>the founding capital</em></div>
+      <div class="gb-desc">One-time grant from DF at MIAF's incorporation. Covers twelve months of operations — six months pre-MVP (today to July 2026) and six months post-MVP. Forheen draws a one-time expense of ₹1L from the grant while still at DT; from July she draws ₹2L/month as founder salary from MIAF.</div>
+      <div class="gb-rows">
+        <div class="gb-row">
+          <div class="gr-n">₹1L</div>
+          <div class="gr-l">Pre-July expense<br>one-time, while at DT</div>
+        </div>
+        <div class="gb-row">
+          <div class="gr-n">₹12L</div>
+          <div class="gr-l">Post-July salary<br>₹2L/month × 6</div>
+        </div>
+        <div class="gb-row">
+          <div class="gr-n">₹10L</div>
+          <div class="gr-l">Infrastructure<br>Cloud, APIs, tools</div>
+        </div>
+        <div class="gb-row">
+          <div class="gr-n">₹27L</div>
+          <div class="gr-l">Working capital<br>Reserve + grant prep</div>
+        </div>
       </div>
-    </div>
-
-    <div class="flow reveal d2">
-      <div class="flow-step"><div class="fs-k">INPUT</div><div class="fs-t">Sources</div><div class="fs-d">Voice, documents, public data and the village ecosystem.</div></div>
-      <div class="flow-step accent"><div class="fs-k">REMEMBER</div><div class="fs-t">Shruti</div><div class="fs-d">Builds evidence-backed, consented memory.</div></div>
-      <div class="flow-step accent"><div class="fs-k">DECIDE</div><div class="fs-t">Utkarsh</div><div class="fs-d">Reasons over memory to find the next best step.</div></div>
-      <div class="flow-step"><div class="fs-k">OUTCOME</div><div class="fs-t">Action</div><div class="fs-d">Decisions that uplift people and communities.</div></div>
     </div>
   </div>
-</section>
 
-<footer id="contact">
-  <div class="wrap">
-    <div class="foot-inner">
-      <div class="foot-brand">
-        <a href="#top" class="logo" style="letter-spacing:3px"><span class="dot"></span>ACHINTYA</a>
-        <p>Memory and reasoning infrastructure for AI — built for Bharat, grounded in evidence, designed to uplift.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col"><h4>Products</h4><a href="#products">Shruti</a><a href="#products">Utkarsh</a><a href="#approach">How it works</a></div>
-        <div class="foot-col"><h4>Company</h4><a href="#why">Mission</a><a href="#company">About</a><a href="#contact">Request access</a></div>
+  <div class="kbox blue" style="margin-top:20px">
+    <div class="kl">DF's 49% — what it means</div>
+    <p>DF's 49% stake in MIAF is its institutional stake as the founding body — not a passive holding. It gives DF a seat at the table in every significant decision, a proportional return on MIAF's commercial success, and the credibility to speak as a genuine co-founder in grant applications and venture conversations. Forheen runs MIAF. DF anchors it.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══ DT — MOTIVE + PLAN ══ -->
+<div class="sec">
+  <div class="stag">DT — Drishtee Technology</div>
+  <h2>The commercial layer — built for <em>rural women's prosperity.</em></h2>
+  <p><b>GOI — Gram Operating Interface — is DT's flagship product.</b> Think of it as Google Analytics for rural operations, but conversational. Anyone inside the Drishtee ecosystem can ask GOI: which villages need a new hub? Why are sales declining? What is in demand where? GOI makes the full intelligence of the MIAF engines accessible in plain language, to anyone who needs it.</p>
+  <p>Alongside GOI, DT builds <b>Shruti</b> — not an engine, but a <b>character</b>. Shruti is the public-facing voice and chatbot persona that rural women interact with directly. She has a name, a personality, and speaks in their language. She is how the intelligence of Smriti and Utkarsh reaches the last mile — not as a dashboard or a query tool, but as a trusted voice a woman can talk to. Shruti is DT's most important promotional and engagement asset.</p>
+  <p>DT's commercial sustainability and rural women's economic prosperity are the same goal expressed differently. Every Dhavak route creates a livelihood. Every COS order connects a rural woman to a supply chain she couldn't reach alone. Every HUB creates employment. Every Karmasetu user is a woman whose productivity is recognised. <b>A self-sustaining commercial layer is the most durable thing DT can give rural women</b> — more durable than any grant cycle.</p>
+
+  <div class="kbox rose">
+    <div class="kl">The motive</div>
+    <p>DT builds commercial products because the alternative — aid-dependent infrastructure that disappears when the funding does — has failed rural communities for decades. Every ₹1 of DT's recurring revenue is a ₹1 that does not depend on a donor's continued generosity. GOI is how that recurring revenue scales: one product, many villages, compounding intelligence.</p>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="stag">DT — FY26-27 strategic roadmap</div>
+  <h2>Four phases. <em>One direction.</em></h2>
+  <div class="quarters">
+    <div class="qcard q1">
+      <div class="qn">Q1 · Apr–Jun 2026</div>
+      <div class="qt">Stabilize</div>
+      <div class="qobj">Stabilize service revenue. Build products for launch.</div>
+      <ul>
+        <li>Dhavak MVP in development</li>
+        <li>COS MVP in development</li>
+        <li>Revenue: CSP, LP, Quiver</li>
+        <li>SPOC consulting pipeline</li>
+      </ul>
+      <div class="qs" style="background:#F1F5F9;color:#64748B">Investment period</div>
+    </div>
+    <div class="qcard q2">
+      <div class="qn">Q2 · Jul–Sep 2026</div>
+      <div class="qt">Launch</div>
+      <div class="qobj">Dhavak, COS, Karmasetu, Ekyam, Spandnaad go live. Break-even.</div>
+      <ul>
+        <li>Dhavak MVP — Jul</li>
+        <li>COS MVP — Aug</li>
+        <li>Karmasetu — Aug</li>
+        <li>Ekyam — Aug</li>
+        <li>Spandnaad HRMS — Sep</li>
+        <li>DSDC LMS — Sep</li>
+      </ul>
+      <div class="qs" style="background:#DCFCE7;color:#16A34A">Break-even Sep 2026</div>
+    </div>
+    <div class="qcard q3">
+      <div class="qn">Q3 · Oct–Dec 2026</div>
+      <div class="qt">Commercialize</div>
+      <div class="qobj">HUB launch. COS subscriptions. Cash positive.</div>
+      <ul>
+        <li>HUB setup — Oct</li>
+        <li>COS sub DROP — Nov</li>
+        <li>COS sub VMS — Nov</li>
+        <li>DEUKA Dashboards — Nov</li>
+        <li>HUB subscription — Dec</li>
+      </ul>
+      <div class="qs" style="background:var(--bluepale);color:var(--blue)">Cash positive Nov 2026</div>
+    </div>
+    <div class="qcard q4">
+      <div class="qn">Q4 · Jan–Mar 2027</div>
+      <div class="qt">Stabilize</div>
+      <div class="qobj">Lock recurring. Prepare FY27-28 renewals.</div>
+      <ul>
+        <li>Subscription renewals</li>
+        <li>Dashboard expansion</li>
+        <li>Platform stabilization</li>
+        <li>Team optimization plan</li>
+      </ul>
+      <div class="qs" style="background:#F5F3FF;color:#7C3AED">Recurring locked</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="stag">DT — FY26-27 revenue plan</div>
+  <h2>₹1.01 Cr projected across <em>two streams.</em></h2>
+  <div class="revgrid">
+    <div class="revtbl">
+      <div class="rh">Product revenue — ₹29L</div>
+      <table>
+        <tr><td>Dhavak MVP<span class="sub">Jul 2026 · one-time</span></td><td>₹3L</td></tr>
+        <tr><td>COS MVP<span class="sub">Aug 2026 · one-time</span></td><td>₹3L</td></tr>
+        <tr><td>COS Subscription — DROP<span class="sub">Nov 2026 · annual</span></td><td>₹5L</td></tr>
+        <tr><td>COS Subscription — VMS<span class="sub">Nov 2026 · annual</span></td><td>₹5L</td></tr>
+        <tr><td>HUB Setup & Integration<span class="sub">Oct 2026 · one-time</span></td><td>₹8L</td></tr>
+        <tr><td>HUB Subscription — 30 Hubs<span class="sub">Dec 2026 · annual</span></td><td>₹5L</td></tr>
+        <tr class="tr"><td>Product total</td><td>₹29L</td></tr>
+      </table>
+    </div>
+    <div class="revtbl">
+      <div class="rh">Recurring revenue — ₹72.1L</div>
+      <table>
+        <tr><td>CSP — DDCL<span class="sub">₹1L/month · Apr onwards</span></td><td>₹12L</td></tr>
+        <tr><td>LP — DF<span class="sub">₹50K/month · Apr onwards</span></td><td>₹6L</td></tr>
+        <tr><td>Quiver<span class="sub">₹50K/month · Apr onwards</span></td><td>₹6L</td></tr>
+        <tr><td>Karmasetu — DEUKA<span class="sub">300 users · ₹300/user · Aug</span></td><td>₹10.8L</td></tr>
+        <tr><td>Spandnaad HRMS<span class="sub">₹1.5L/month · Sep onwards</span></td><td>₹10.5L</td></tr>
+        <tr><td>DEUKA Dashboards<span class="sub">₹1L/month · Nov onwards</span></td><td>₹5L</td></tr>
+        <tr><td>Ekyam App<span class="sub">Dev ₹3L + ₹50K/month · Sep</span></td><td>₹6.5L</td></tr>
+        <tr><td>DSDC LMS<span class="sub">₹2L + ₹50K/month · Oct</span></td><td>₹5L</td></tr>
+        <tr><td>Expense Platforms<span class="sub">3 clients · ₹10K/month each</span></td><td>₹4L</td></tr>
+        <tr><td>SPOC Consulting<span class="sub">₹70K/month · Jul onwards</span></td><td>₹6.3L</td></tr>
+        <tr class="tr"><td>Recurring total</td><td>₹72.1L</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="kbox blue" style="margin-top:18px">
+    <div class="kl">FY26-27 total</div>
+    <p>₹29L product + ₹72.1L recurring = <b>₹1.01 Crore projected</b></p>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="stag">DT — cost structure</div>
+  <h2>₹1.43 Cr annual cost. <em>Mostly team.</em></h2>
+  <div class="costtbl">
+    <table>
+      <thead><tr><th>Cost item</th><th>Monthly</th><th>Annual</th></tr></thead>
+      <tbody>
+        <tr><td>Team — 20 members</td><td>₹9L</td><td>₹108L</td></tr>
+        <tr><td>Infrastructure & office</td><td>₹2.5L</td><td>₹30L</td></tr>
+        <tr><td>Other operational</td><td>₹0.4L</td><td>₹5L</td></tr>
+        <tr class="tr"><td>Total</td><td>₹11.9L</td><td><b>₹143L · ₹1.43 Cr</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="stag">DT — break-even analysis</div>
+  <h2>Revenue crosses ₹12L/month by <em>September 2026.</em></h2>
+  <p>Monthly costs hold at ₹12L. Revenue builds through service stabilization in Q1, product launches in Q2, and subscription activations in Q3.</p>
+  <div class="bechart">
+    <div class="behead">
+      <span>Monthly revenue vs ₹12L cost line — FY26-27</span>
+      <div class="belegend">
+        <div class="bll"><div class="bld" style="background:#3B82F6"></div>Revenue</div>
+        <div class="bll"><div class="bld" style="background:#CBD5E1"></div>Cost ₹12L</div>
       </div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Achintya</span><span>remember · reason · decide</span></div>
+    <div class="berows">
+      <div class="berow"><div class="bemo">Apr</div><div class="bebars"><div class="bebar" style="width:13%"></div></div><div class="beval">₹2L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">May</div><div class="bebars"><div class="bebar" style="width:17%"></div></div><div class="beval">₹2.5L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">Jun</div><div class="bebars"><div class="bebar" style="width:20%"></div></div><div class="beval">₹3L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">Jul</div><div class="bebars"><div class="bebar" style="width:40%"></div></div><div class="beval">₹6L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">Aug</div><div class="bebars"><div class="bebar" style="width:60%"></div></div><div class="beval">₹9L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">Sep</div><div class="bebars"><div class="bebar" style="width:80%;box-shadow:0 0 8px rgba(59,130,246,0.4)"></div></div><div class="beval">₹12L</div><span class="betag green">Break-even</span></div>
+      <div class="berow"><div class="bemo">Oct</div><div class="bebars"><div class="bebar" style="width:87%"></div></div><div class="beval">₹13L</div><div style="width:80px"></div></div>
+      <div class="berow"><div class="bemo">Nov</div><div class="bebars"><div class="bebar" style="width:100%;box-shadow:0 0 10px rgba(59,130,246,0.5)"></div></div><div class="beval">₹15L</div><span class="betag blue">Cash positive</span></div>
+      <div class="becostline">
+        <div class="bemo">Cost</div>
+        <div class="becostbar" style="width:100%;height:3px;background:var(--bddk);border-radius:2px;position:relative">
+          <div class="becostmark">₹12L/month</div>
+        </div>
+        <div style="width:48px"></div><div style="width:80px"></div>
+      </div>
+    </div>
   </div>
-</footer>
+</div>
 
-<script>
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)});
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<div class="sec pagebreak">
+  <div class="stag">DT — FY27-28 sustainability forecast</div>
+  <h2>Retain. Optimize. <em>Near self-sustaining.</em></h2>
+  <p>No new customers, no new MVP revenue. Existing customers retained with 10% pricing increase. Three positions removed saving ₹12.8L/year. Result: ₹15L gap — closeable with any one of four actions already within reach.</p>
+  <div class="kbox amber">
+    <div class="kl">FY27-28 assumptions</div>
+    <p>No new customers · No new MVP revenue · No MIAF funding included · 10% price increase · 3 positions removed (₹12.8L/year saving)</p>
+  </div>
+  <div class="fy28">
+    <table>
+      <thead><tr><th>Revenue stream</th><th>FY27-28 (10% increase)</th></tr></thead>
+      <tbody>
+        <tr><td>CSP — DDCL</td><td>₹13.2L</td></tr>
+        <tr><td>LP — DF</td><td>₹6.6L</td></tr>
+        <tr><td>Quiver</td><td>₹6.6L</td></tr>
+        <tr><td>COS Subscription — DROP</td><td>₹5.5L</td></tr>
+        <tr><td>COS Subscription — VMS</td><td>₹5.5L</td></tr>
+        <tr><td>HUB Subscription</td><td>₹5.5L</td></tr>
+        <tr><td>Karmasetu — DEUKA</td><td>₹11.9L</td></tr>
+        <tr><td>DSDC Maintenance</td><td>₹6.6L</td></tr>
+        <tr><td>Ekyam Maintenance</td><td>₹6.6L</td></tr>
+        <tr><td>Spandnaad HRMS</td><td>₹19.8L</td></tr>
+        <tr><td>Expense Platforms</td><td>₹6.6L</td></tr>
+        <tr><td>SPOC Consulting</td><td>₹9.2L</td></tr>
+        <tr><td>DEUKA Dashboards</td><td>₹13.2L</td></tr>
+        <tr><td>Dhavak</td><td>₹1.3L</td></tr>
+        <tr class="tr"><td>Total revenue</td><td>₹1.15 Cr</td></tr>
+        <tr class="expr"><td>Total expense (optimized)</td><td>₹1.30 Cr</td></tr>
+        <tr class="gapr"><td>Gap</td><td>₹15L · ₹1.25L/month</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="gapopts">
+    <div class="gapopt"><div class="gon">Option 1</div><h4>One new COS customer</h4><p>Single annual subscription at existing pricing closes the gap independently.</p><div class="goval">+₹5.5L</div></div>
+    <div class="gapopt"><div class="gon">Option 2</div><h4>Karmasetu 300 → 500 users</h4><p>Expand DEUKA Karmasetu deployment by 200 users.</p><div class="goval">+₹7L</div></div>
+    <div class="gapopt"><div class="gon">Option 3</div><h4>Additional HUB expansion</h4><p>One new hub cluster: setup + annual subscription.</p><div class="goval">+₹5L</div></div>
+    <div class="gapopt"><div class="gon">Option 4</div><h4>Additional dashboard revenue</h4><p>One new analytics contract at existing rates.</p><div class="goval">+₹5L+</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══ MIAF PLAN ══ -->
+<div class="sec pagebreak">
+  <div class="stag teal">MIAF — Memory Intelligence · R&D Engine · Formed by DF · Starts Today</div>
+  <h2 class="teal">The R&D engine beneath everything. <em>Built once. Powering many.</em></h2>
+  <p>MIAF is not a product company. It is an <b>R&D engine</b> — the intelligence infrastructure that DT's interfaces sit on top of, and that any other research engine or partner organization can license. Smriti researches. Utkarsh decides. Together they make every interface that consumes them smarter over time.</p>
+  <p>DT's GOI and Shruti (the public character) are MIAF's first consumers. Spandnaad — DT's HR platform — can draw on MIAF's engines for workforce intelligence and pattern recognition. As MIAF's memory grows richer with real rural data, the value it provides to every interface that plugs in compounds. This is what makes MIAF a research and commercial asset simultaneously.</p>
+  <p>MIAF is incorporated today by DF. Forheen is Founder and CEO. She holds 1% founding equity from day one. Over six months she builds Smriti and Utkarsh alongside her existing DT responsibilities — with a one-time ₹1L expense from DF's founding grant. She delivers the MVP by July 2026, moves to MIAF full-time, gains 10% equity, and draws ₹2L/month as founder salary from MIAF. Over the six months that follow, milestone-based vesting brings her stake to 51% — her founder stake on the journey to a ₹100 crore MIAF.</p>
+  <div class="kbox teal">
+    <div class="kl">The positioning</div>
+    <p>OpenAI made intelligence accessible. Sarvam is making language accessible. <b>MIAF will make memory persistent.</b> Starting with rural Bharat — the hardest proving ground — then for every organization that needs to remember and decide well.</p>
+  </div>
+</div>
+
+<!-- ══ MIAF ENGINE DETAIL ══ -->
+<div class="sec">
+  <div class="stag teal">MIAF — what gets built</div>
+  <h2 class="teal">Two engines. What they are, <em>what they do, how they work.</em></h2>
+  <p>Smriti and Utkarsh are not generic AI wrappers. Each is a purpose-built system with a defined architecture, a specific data model, and a clear job. Below is what gets designed and built during the six-month R&D period — and what it becomes once deployed.</p>
+
+  <div class="engcards">
+    <div class="engcard shruti">
+      <div class="ec-tag">R&D engine</div>
+      <div class="ec-name">Smriti</div>
+      <div class="ec-verb">It researches. It models. It builds the intelligence substrate.</div>
+      <p class="ec-desc">Smriti is MIAF's core R&D engine — not just a memory store, but a research platform. It covers voice modelling, acoustic feature extraction, Indic language NLP, knowledge graph systems, data pipelines, and pattern recognition. Everything Utkarsh reasons over, and everything DT's interfaces consume, originates in Smriti's research infrastructure.</p>
+
+      <div class="ec-section-label">Research domains</div>
+      <div class="ec-pills">
+        <span class="ecpill">Voice &amp; acoustic modelling</span>
+        <span class="ecpill">Indic language NLP</span>
+        <span class="ecpill">Knowledge graph systems</span>
+        <span class="ecpill">Memory architecture</span>
+        <span class="ecpill">Data pipeline R&D</span>
+        <span class="ecpill">Pattern recognition</span>
+        <span class="ecpill">Rural context AI</span>
+      </div>
+
+      <div class="ec-section-label">What it produces</div>
+      <div class="ec-pills">
+        <span class="ecpill strong">Structured memory</span>
+        <span class="ecpill strong">Knowledge graph</span>
+        <span class="ecpill strong">Voice models</span>
+        <span class="ecpill strong">Evidence chains</span>
+        <span class="ecpill strong">Data for Utkarsh</span>
+      </div>
+
+      <div class="ec-section-label">Core properties</div>
+      <div class="ec-props">
+        <div class="ec-prop"><span class="ecp-k">Provenance</span><span class="ecp-v">every output traced to its source</span></div>
+        <div class="ec-prop"><span class="ecp-k">Consent</span><span class="ecp-v">user-controlled, DPDP-compliant</span></div>
+        <div class="ec-prop"><span class="ecp-k">Temporal</span><span class="ecp-v">tracks change across seasons and years</span></div>
+        <div class="ec-prop"><span class="ecp-k">Multilingual</span><span class="ecp-v">Kannada, Hindi, Telugu, English</span></div>
+        <div class="ec-prop"><span class="ecp-k">Extensible</span><span class="ecp-v">new research domains added over time</span></div>
+      </div>
+    </div>
+
+    <div class="engcard utkarsh">
+      <div class="ec-tag">Decision engine</div>
+      <div class="ec-name">Utkarsh</div>
+      <div class="ec-verb">Optimized to decide. Built entirely on Smriti's data.</div>
+      <p class="ec-desc">Utkarsh is purpose-optimized for one job: producing the best possible decision from the richest possible data. It reads Smriti's knowledge graph, voice patterns, and evidential outputs — and reasons over them to answer the questions that drive real action. It does not collect data. It inherits it from Smriti and uses it decisively.</p>
+
+      <div class="ec-section-label">Questions it answers</div>
+      <div class="ec-qa">
+        <div class="ec-q"><span class="ecq-q">What happened?</span><span class="ecq-a">audit trails, event reconstruction, history</span></div>
+        <div class="ec-q"><span class="ecq-q">Why did it happen?</span><span class="ecq-a">pattern analysis, correlation, root cause</span></div>
+        <div class="ec-q"><span class="ecq-q">What should happen next?</span><span class="ecq-a">next-best-action, prioritized recommendations</span></div>
+        <div class="ec-q"><span class="ecq-q">Where is the opportunity?</span><span class="ecq-a">demand detection, expansion signals</span></div>
+        <div class="ec-q"><span class="ecq-q">What is her best next step?</span><span class="ecq-a">individual prosperity guidance for rural women</span></div>
+      </div>
+
+      <div class="ec-section-label">Who it serves</div>
+      <div class="ec-pills">
+        <span class="ecpill">GOI — institution operators</span>
+        <span class="ecpill">Shruti — rural women (via character)</span>
+        <span class="ecpill">Spandnaad — workforce intelligence</span>
+        <span class="ecpill">External licensees</span>
+      </div>
+
+      <div class="ec-section-label">Core capabilities</div>
+      <div class="ec-props">
+        <div class="ec-prop"><span class="ecp-k">Forecasting</span><span class="ecp-v">seasonal, economic, demand prediction</span></div>
+        <div class="ec-prop"><span class="ecp-k">Evidence</span><span class="ecp-v">every recommendation traceable to memory</span></div>
+        <div class="ec-prop"><span class="ecp-k">Agentic</span><span class="ecp-v">takes actions, not just generates answers</span></div>
+        <div class="ec-prop"><span class="ecp-k">Token-based</span><span class="ecp-v">usage-priced — scales with consumption</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memory pipeline visual -->
+  <div class="mpipe">
+    <div class="mp-label">How Smriti builds intelligence — the processing pipeline</div>
+    <div class="mp-stages">
+      <div class="mp-stage s0">
+        <div class="mps-title">Raw input</div>
+        <div class="mps-items">Voice · Docs · Events · Field data</div>
+      </div>
+      <div class="mp-arrow">→</div>
+      <div class="mp-stage s1">
+        <div class="mps-title">Transcript</div>
+        <div class="mps-items">ASR · NLP · Structure</div>
+      </div>
+      <div class="mp-arrow">→</div>
+      <div class="mp-stage s2">
+        <div class="mps-title">Facts</div>
+        <div class="mps-items">Entities · Claims · Numbers</div>
+      </div>
+      <div class="mp-arrow">→</div>
+      <div class="mp-stage s3">
+        <div class="mps-title">Events</div>
+        <div class="mps-items">Who · What · When</div>
+      </div>
+      <div class="mp-arrow">→</div>
+      <div class="mp-stage s4">
+        <div class="mps-title">Patterns</div>
+        <div class="mps-items">Trends · Seasons · Behaviour</div>
+      </div>
+      <div class="mp-arrow">→</div>
+      <div class="mp-stage s5">
+        <div class="mps-title">Knowledge graph</div>
+        <div class="mps-items">Relationships · Causality · Identity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connection flow -->
+  <div class="connflow" style="margin-top:18px">
+    <div class="cf-box shruti-cf">Smriti<span>R&D engine</span></div>
+    <div class="cf-arrow"><div class="cf-arr-line">→</div><div class="cf-arr-label">data</div></div>
+    <div class="cf-box utkarsh-cf">Utkarsh<span>decision engine</span></div>
+    <div class="cf-arrow"><div class="cf-arr-line">→</div><div class="cf-arr-label">powers</div></div>
+    <div class="cf-outputs">
+      <span class="cf-out">GOI</span>
+      <span class="cf-out">Shruti — character</span>
+      <span class="cf-out">Spandnaad</span>
+      <span class="cf-out">External engines</span>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="stag teal">MIAF — 6-month MVP rollout</div>
+  <h2 class="teal">Today to July. Building in the real world, <em>owning the result.</em></h2>
+  <div class="rollout">
+    <div class="rphase">
+      <div class="rpmarker"><div class="rpdot active"></div></div>
+      <div class="rpbody">
+        <div class="rpwhen">Today — June 2026</div>
+        <h3>DF incorporates MIAF · Forheen continues at DT</h3>
+        <p>DF registers MIAF as an independent company. DF contributes ₹50L founding grant and holds 49% institutional stake. Forheen is Founder and CEO of MIAF. She continues her current responsibilities at DT through July 2026 while building Smriti and Utkarsh in parallel — there is no change to her DT role during this period. She draws a one-time ₹1L expense from the DF grant while at DT. All Smriti and Utkarsh IP vests in MIAF from the first line of code.</p>
+        <div class="rppills">
+          <span class="rppill">MIAF incorporated by DF</span>
+          <span class="rppill">₹50L founding grant</span>
+          <span class="rppill">Forheen: 1% equity</span>
+          <span class="rppill">₹1L one-time from DF grant</span>
+          <span class="rppill">DT role continues as-is</span>
+          <span class="rppill">Smriti + Utkarsh in build</span>
+        </div>
+      </div>
+    </div>
+    <div class="pivot">
+      <div class="pvtitle">July 2026 — MVP delivered. Forheen moves to MIAF full-time.</div>
+      <p>MVP of Smriti and Utkarsh delivered and validated on real DT operations. Forheen transitions from DT to MIAF as Founder and CEO. If needed, she can continue as a part-time consultant to DT — managing existing responsibilities — while leading MIAF. Founder salary begins from MIAF at ₹2L/month, funded from the DF grant.</p>
+      <div class="pvmetrics">
+        <div class="pvmet"><div class="pvn">+10%</div><div class="pvl">equity earned</div></div>
+        <div class="pvmet"><div class="pvn">11%</div><div class="pvl">Forheen total</div></div>
+        <div class="pvmet"><div class="pvn">₹2L/mo</div><div class="pvl">founder salary</div></div>
+        <div class="pvmet"><div class="pvn">Part-time</div><div class="pvl">DT consultant (optional)</div></div>
+        <div class="pvmet"><div class="pvn">49%</div><div class="pvl">DF retains</div></div>
+      </div>
+    </div>
+    <div class="rphase">
+      <div class="rpmarker"><div class="rpdot"></div></div>
+      <div class="rpbody">
+        <div class="rpwhen">Aug 2026 — Jan/Feb 2027</div>
+        <h3>Four milestones. Equity grows to 51%.</h3>
+        <p>Over the six months post-MVP, four milestones bring Forheen's stake from 11% to 51%. She leads MIAF full-time as Founder and CEO, drawing ₹2L/month from MIAF. If DT requires continuity support, she can serve as a part-time consultant managing existing responsibilities — keeping the two parallel without conflict. MIAF files grant applications, begins venture conversations, and operates independently. DF retains 49% throughout. The 51% is not a ceiling — it is Forheen's founder stake on the journey to ₹100 crore. If significant seeding or institutional funding arrives before that milestone, the dilution conversation happens then, not before.</p>
+        <div class="rppills">
+          <span class="rppill">4 milestones × +10%</span>
+          <span class="rppill">₹2L/month from MIAF</span>
+          <span class="rppill">Part-time DT consultant if needed</span>
+          <span class="rppill">Grant applications filed</span>
+          <span class="rppill">DF: 49% permanent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EQUITY TABLE -->
+<div class="sec">
+  <div class="stag teal">MIAF — Forheen's equity journey</div>
+  <h2 class="teal">1% today. 51% when MIAF is worth <em>₹100 crore.</em></h2>
+  <p>Forheen's equity in MIAF grows milestone by milestone. Her 51% stake is her founder's right and her commitment — the majority that lets her build without compromise. DF holds 49% as the founding institution throughout. Neither stake dilutes until the ₹100 crore milestone — at which point the conversation on further investment, dilution, or expansion happens with a company that has proved its value.</p>
+
+  <table class="eqtable">
+    <thead>
+      <tr><th>Event</th><th>Deliverable</th><th>When</th><th>Earned</th><th>Total</th></tr>
+    </thead>
+    <tbody>
+      <tr class="foundrow">
+        <td>E-0</td>
+        <td>DF incorporates MIAF. Forheen's founding stake — the first skin in the game.</td>
+        <td class="when">Today</td>
+        <td class="pct">1%</td>
+        <td class="tot">1%</td>
+      </tr>
+      <tr class="mvprow">
+        <td>E-1</td>
+        <td><b>MVP of Smriti + Utkarsh delivered.</b> Live system on real DT operational data. Forheen moves to MIAF full-time as Founder and CEO at ₹2L/month. May continue as part-time DT consultant if needed. Grant applications filed.</td>
+        <td class="when">Jul 2026</td>
+        <td class="pct">+10%</td>
+        <td class="tot">11%</td>
+      </tr>
+      <tr>
+        <td>E-2</td>
+        <td>Live deployment in DT's active field operations. Real teams, real data, real outcomes — not a sandbox. First institutional grant application submitted.</td>
+        <td class="when">Sep 2026</td>
+        <td class="pct">+10%</td>
+        <td class="tot">21%</td>
+      </tr>
+      <tr>
+        <td>E-3</td>
+        <td>Measurable operational value demonstrated — at least one documented decision improvement directly attributable to MIAF engines, verifiable by DF.</td>
+        <td class="when">Nov 2026</td>
+        <td class="pct">+10%</td>
+        <td class="tot">31%</td>
+      </tr>
+      <tr>
+        <td>E-4</td>
+        <td>First external grant secured or first institutional partner outside DT confirmed. MIAF operationally self-sustaining — independent of DF expense allowance.</td>
+        <td class="when">Jan 2027</td>
+        <td class="pct">+10%</td>
+        <td class="tot">41%</td>
+      </tr>
+      <tr>
+        <td>E-5</td>
+        <td>Venture funding round closed or second paying institutional deployment confirmed. MIAF on track to ₹100 crore valuation milestone.</td>
+        <td class="when">Mar 2027</td>
+        <td class="pct">+10%</td>
+        <td class="tot">51%</td>
+      </tr>
+      <tr class="goalrow">
+        <td colspan="3"><b>Forheen's founder stake — held through the ₹100 crore milestone</b></td>
+        <td class="pct">—</td>
+        <td class="tot">51%</td>
+      </tr>
+      <tr class="dfrow">
+        <td colspan="3">DF — founding institutional stake (permanent)</td>
+        <td class="pct">—</td>
+        <td class="tot" style="color:var(--blue)">49%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="eqbars">
+    <div class="eqbhead">Ownership structure — visual</div>
+    <div class="eqbrows">
+      <div class="eqbrow">
+        <div class="eqblabel">Today</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:2%"></div></div>
+        <div class="eqbpct">1%</div>
+        <div class="eqbevent">Forheen — founding stake on incorporation</div>
+      </div>
+      <div class="eqbrow">
+        <div class="eqblabel">Jul '26</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:22%"></div></div>
+        <div class="eqbpct">11%</div>
+        <div class="eqbevent">MVP delivered · Forheen moves to MIAF full-time · ₹2L/month</div>
+      </div>
+      <div class="eqbrow">
+        <div class="eqblabel">Sep '26</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:41%"></div></div>
+        <div class="eqbpct">21%</div>
+        <div class="eqbevent">Live DT deployment · grant application filed</div>
+      </div>
+      <div class="eqbrow">
+        <div class="eqblabel">Nov '26</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:61%"></div></div>
+        <div class="eqbpct">31%</div>
+        <div class="eqbevent">Measurable operational value demonstrated</div>
+      </div>
+      <div class="eqbrow">
+        <div class="eqblabel">Jan '27</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:80%"></div></div>
+        <div class="eqbpct">41%</div>
+        <div class="eqbevent">First external grant · independent of DF expense</div>
+      </div>
+      <div class="eqbrow">
+        <div class="eqblabel">Mar '27</div>
+        <div class="eqbwrap"><div class="eqbfill" style="width:100%;box-shadow:0 0 8px rgba(13,148,136,0.4)"></div></div>
+        <div class="eqbpct">51%</div>
+        <div class="eqbevent">Forheen's founder stake — held through ₹100 crore milestone</div>
+      </div>
+      <div class="eqbrow" style="padding-top:10px;border-top:1px solid var(--bd);margin-top:4px">
+        <div class="eqblabel" style="color:var(--blue)">DF</div>
+        <div class="eqbwrap"><div class="eqbfill df-bar" style="width:98%"></div></div>
+        <div class="eqbpct" style="color:var(--blue)">49%</div>
+        <div class="eqbevent" style="color:var(--blue)">DF — founding institutional stake · permanent</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kbox green" style="margin-top:18px">
+    <div class="kl">On dilution and future funding</div>
+    <p>Forheen's 51% is her founder's right — not subject to dilution until the ₹100 crore milestone. If significant seeding, institutional grants, or venture investment arrives before that milestone, the structure of any dilution is negotiated at that point — with a company that has already proved its value, not before. DF's 49% follows the same principle. Both parties build toward the milestone first; the capital conversation happens from a position of strength.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- WHAT DF IS ASKED -->
+<div class="sec">
+  <div class="stag">For DF — formal asks</div>
+  <h2>Nine asks. Clear. <em>Actionable today.</em></h2>
+
+  <div class="asklist">
+    <div class="ask"><div class="askn rose">01</div><div class="askbody">
+      <strong>Incorporate MIAF as an independent company — today</strong>
+      <p>DF registers MIAF with Forheen as Founder and CEO holding 1% founding equity and DF holding 49% as founding institution. All Smriti and Utkarsh IP vests in MIAF from incorporation. A written IP assignment and founding agreement to be signed before commencement.</p>
+    </div></div>
+    <div class="ask"><div class="askn rose">02</div><div class="askbody">
+      <strong>Release ₹50 lakhs founding grant to MIAF</strong>
+      <p>One-time grant from DF at incorporation — covering a one-time pre-July operational expense (₹1L), post-July founder salary (₹2L/month × 6 = ₹12L), infrastructure (₹10L), and working capital reserve (₹27L). Forheen requires no financial support from DT at any stage.</p>
+    </div></div>
+    <div class="ask"><div class="askn rose">03</div><div class="askbody">
+      <strong>Confirm DF's 49% stake as permanent founding institution</strong>
+      <p>DF's 49% stake in MIAF is its institutional stake as founding body — not a passive holding. It carries governance rights, proportional returns, and the right to be named as co-founder in grant applications. This stake is DF's, permanently, through the ₹100 crore milestone and beyond.</p>
+    </div></div>
+    <div class="ask"><div class="askn">04</div><div class="askbody">
+      <strong>Approve DT's FY26-27 investment and revenue plan</strong>
+      <p>Endorse the investment period through Q2, break-even target of September 2026, and operational support for DT's product launches — particularly HUB rollout and COS subscription activations.</p>
+    </div></div>
+    <div class="ask"><div class="askn">05</div><div class="askbody">
+      <strong>Endorse DT's FY27-28 team optimization and pricing increase</strong>
+      <p>Approve removal of three positions (saving ₹12.8L/year) and 10% pricing increase across all recurring streams — the two levers that move DT to near self-sustainability.</p>
+    </div></div>
+    <div class="ask" style="border-color:var(--bluebd);background:#FAFEFF"><div class="askn" style="background:#E0F0FF;border-color:var(--bluebd);color:var(--blue)">06</div><div class="askbody">
+      <strong>Define and agree Forheen's KRAs in both DT and MIAF — in writing, before commencement</strong>
+      <p>Forheen will carry responsibilities in two entities during the pre-July period. To prevent ambiguity, conflict of interest, or disputed accountability, her KRAs in each must be formally agreed and documented before MIAF is incorporated.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+        <div style="border:1px solid var(--bd);border-radius:10px;padding:16px 16px;background:var(--white)">
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px">In DT — now to July 2026</div>
+          <ul style="list-style:none;font-size:13.5px;color:#334155;display:flex;flex-direction:column;gap:7px">
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Continue existing responsibilities as-is — no expansion of DT scope</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Deliver on agreed DT product milestones (Smriti + Utkarsh MVP as DT's proving ground)</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Reviewed by DT management on existing cadence</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>MIAF R&D work does not use DT's paid infrastructure or team time beyond what is formally agreed</li>
+          </ul>
+        </div>
+        <div style="border:1px solid var(--tealbd);border-radius:10px;padding:16px 16px;background:var(--tealpale)">
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px">In MIAF — now to July 2026</div>
+          <ul style="list-style:none;font-size:13.5px;color:#334155;display:flex;flex-direction:column;gap:7px">
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Deliver working MVP of Smriti and Utkarsh by July 2026</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Set up MIAF's technical architecture, IP, and R&D roadmap</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Reviewed by DF (as 49% founding institution) against E-1 milestone criteria</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Time spent on MIAF is transparent to DF — monthly update to DF on progress</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px">
+        <div style="border:1px solid var(--bd);border-radius:10px;padding:16px 16px;background:var(--white)">
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px">In DT — post July (optional)</div>
+          <ul style="list-style:none;font-size:13.5px;color:#334155;display:flex;flex-direction:column;gap:7px">
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Part-time consulting role only — specific responsibilities agreed in writing</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Scope is bounded: managing existing continuity, not new delivery</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--blue)">→</span>Separate consulting agreement; no conflict with MIAF equity or IP</li>
+          </ul>
+        </div>
+        <div style="border:1px solid var(--tealbd);border-radius:10px;padding:16px 16px;background:var(--tealpale)">
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px">In MIAF — post July (primary)</div>
+          <ul style="list-style:none;font-size:13.5px;color:#334155;display:flex;flex-direction:column;gap:7px">
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Full-time Founder and CEO — MIAF is the primary engagement</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>KRAs = milestones E-2 through E-5 (deployment, value, grant, venture)</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--teal)">→</span>Quarterly review with DF on milestone progress and equity vesting</li>
+          </ul>
+        </div>
+      </div>
+    </div></div>
+    <div class="ask"><div class="askn teal">07</div><div class="askbody">
+      <strong>Acknowledge Forheen's transition to MIAF from July — with optional DT consulting</strong>
+      <p>From July 2026, Forheen leads MIAF full-time as Founder and CEO. If DT requires continuity on existing responsibilities, she can serve as a part-time consultant to DT — this is optional, does not affect her MIAF equity or IP, and should be documented separately if taken up.</p>
+    </div></div>
+    <div class="ask"><div class="askn teal">08</div><div class="askbody">
+      <strong>Provide operational access to the Drishtee ecosystem for MIAF</strong>
+      <p>Grant MIAF access to real workflows, consented field data, and deployment environments. This is the proving ground that makes the MVP credible to grant bodies and venture investors.</p>
+    </div></div>
+    <div class="ask"><div class="askn teal">09</div><div class="askbody">
+      <strong>Provide institutional endorsement for MIAF's grant applications</strong>
+      <p>A formal co-founder support letter from DF — citing Drishtee's rural reach, operational history, and community relationships — strengthens MIAF's applications to IndiaAI Mission, BMGF, GIZ, DST, and similar bodies significantly.</p>
+    </div></div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <blockquote>
+    DT builds the roads rural women walk on.<br>
+    MIAF remembers where they have been<br>
+    and helps them see where to go next.<br><br>
+    DF makes both possible —<br>
+    not as a funder, but as a <em>founder.</em>
+  </blockquote>
+  <div class="csig">
+    <div class="csigblock">
+      <div class="csigname">Forheen</div>
+      <div class="csigrole">Founder & CEO · MIAF</div>
+    </div>
+    <div class="csigblock">
+      <div class="csigname">DT</div>
+      <div class="csigrole">Drishtee Technology · commercial layer</div>
+    </div>
+  </div>
+</div>
+
+<p class="caveat">Legal note: This document is a proposal of intent. All financial projections are estimates based on current operational data. Equity percentages, vesting schedules, and grant terms must be formalized in MIAF's founding documents and a written agreement reviewed by qualified legal counsel before commencement. The ₹100 crore valuation milestone and dilution terms must be defined with precision in the founding documents. DF and Forheen are strongly advised to seek independent legal counsel before signing any incorporation or equity documents.</p>
+
+</div>
+
+<div class="foot">
+  <div class="footl"><span class="dot"></span>MIAF &amp; DT</div>
+  <p>Proposed to Drishtee Foundation · Confidential · FY 2026-27 to FY 2027-28</p>
+</div>
+
 </body>
 </html>
